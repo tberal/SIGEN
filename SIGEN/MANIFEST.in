@@ -1,0 +1,2 @@
+recursive-include SIGEN/templates *
+recursive-include SIGEN/static *

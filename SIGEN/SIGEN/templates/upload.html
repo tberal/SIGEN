@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+{% if results %}
+<div class="list-div">
+<h2>Resultado do Upload</h2>
+	{% for r in results %}
+		<p>{{ r }}</p>
+	{% endfor %}
+</div>
+{% endif %}
+<div class="form-div">
+{% if results %}
+    <h3>Subir novo arquivo</h3>
+{% endif %}
+<form method="post" enctype="multipart/form-data">
+    <table class="form-table">
+        {{ form.hidden_tag() }}
+        {% for field in form %}
+            <tr>
+                <td>
+                    {% if field.widget.input_type != 'hidden' %}
+                        {{ field.label }}
+                    {% endif %}
+                </td>
+                <td>
+                    {{ field }}
+                </td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="2">
+                <input type=submit title="Upload" value="Subir Arquivo" />
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
+{% endblock %}
